@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro|Lato:700,400|Playfair+Display:400italic,400' rel='stylesheet' type='text/css'>
+    <title>Sikkim, an enchanted land</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <div id="outer">
+        <div id="header">
+            <div class="headertext">
+                Sikkim, an enchanted land
+            </div>
+        </div>
+
+
+        <div id="content">
+            <div class="heading">
+                PELLING, SIKKIM
+            </div>
+
+            <p class="bold">INTRODUCTION</p>
+
+            <p>Pelling is sleepy little town in the Northern Indian state of Sikkim. It is fast emerging as the second biggest tourist destination in the state after Gangtok. The town is famous for it's magnificent views of the snow-capped mountains of Kanchenjunga and it has a rich history, natural environment and local culture. The region is steeped in Buddhist culture and there are several interesting monasteries around it. Pemayangtse monastery is less than a kilometre from Pelling, while a 40 minute walk on the hill opposite the monastery takes you to Sangacholing monastery built in 1697, one of the first in the state. Pelling’s serene environment and picturesque setting is perfect for nice nature walks and small treks. <a href="http://wikitravel.org/en/Pelling">[Source]</a>. </p>
+
+            <p> The map below is a presentation of the important tourist locations reachable from Pelling. Click on a placemark to learn more about each destination. </p>
+
+            <div id="map"> </div>
+
+            <p></p>
+            <p class="bold">THE VIEW FROM PELLING</p>
+
+            <p>
+                Situated at an altitude of 1,900 m (6,250 ft), Pelling offers good views of the surrounding mountain ranges including the Rathong, Kabru North and Kabru South, Talung and of course the majestic Kangchenjunga. The excellent views has caused a boom in the local tourism industry. The mountain range looks particularly serene at dawn when the peaks are lit up in golden hues. <a href="http://wikitravel.org/en/Pelling">[Source]</a>. </p>
+
+            <p> The image below gives a good idea of the major peaks visible from Pelling looking Northwest.</p>
+
+
+            <div class="staticmap">
+                <div class="marker" style="top: 56.89%; left: 24.14%;"></div>
+                <div class="marker" style="top: 49.28%; left: 43.91%;"></div>
+                <div class="marker" style="top: 50.43%; left: 54.01%;"></div>
+                <div class="marker" style="top: 58.76%; left: 66.60%;"></div>
+                <div class="marker" style="top: 49.56%; left: 85.58%;"></div>
+                <div class="maplabel" style="top: 35.89%; left: 20.14%;">RATHONG </br>6679m </div>
+                <div class="maplabel" style="top: 27.50%; left: 38.00%;">KABRU SOUTH </br>7317m </div>
+                <div class="maplabel" style="top: 30.43%; left: 49.01%;">KABRU NORTH </br>7338m </div>
+                <div class="maplabel" style="top: 36.76%; left: 63.6%;">TALUNG </br>7349m </div>
+                <div class="maplabel" style="top: 27.56%; left: 78.5%;">KANGCHENJUNGA </br>8586m </div>
+                <div class="rectangle">
+                    <div class="maplabel" style="padding-top:10px;"> YUKSOM FOREST BLOCK </div>
+                </div>
+            </div>
+
+            <p></p>
+            <p class="bold">KANGCHENJUNGA</p>
+
+            <img alt="Photo of Kangchenjunga" class="imgright" height="195" src="images/kangchen.jpg" title="Photo of Kangchenjunga" width="260">
+
+            <p>The most famous peak visible from Pelling is Kangchenjunga (8586m). It is the third highest mountain in the world, and lies partly in Nepal. Three of the five peaks – Main, Central and South – are on the border between North Sikkim in India and Nepal. It is called Five Treasures of Snow after its five high peaks, and has always been worshipped by the people of Darjeeling and Sikkim. Kangchenjunga was first climbed on 25 May 1955 by Joe Brown and George Band, who were part of a British expedition. They stopped short of the summit as per the promise given to the Chogyal that the top of the mountain would remain inviolate. Source: <a href="https://en.wikipedia.org/wiki/Kangchenjunga">[a]</a> <a href="https://upload.wikimedia.org/wikipedia/commons/0/0a/Kangch-Goechala.jpg">[b]</a> </p>
+
+            <hr>
+
+            <div class="boxstyle">
+                <p class="bold remove_padding">DEVELOPMENT HIGHLIGHTS</p>
+                <p> 1. Created new icons for both the maps. </br>
+                    2. Positioned text as well as markers in the static map. </br>
+                    3. Used CSS styling within the infowindow content boxes. </br>
+                    4. Used map.fitBounds() to automatically fit all the markers within the map boundary </br>
+					5. Most of the photos are original content. </br>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="footer">
+        <p>Copyright &copy; 2016, Nevil JK</p>
+    </div>
+    </div>
+
+    <script>
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 27.319,
+                    lng: 88.239
+                },
+                //mapTypeId: google.maps.MapTypeId.TERRAIN,
+                zoom: 12
+            });
+            
+            // Infowindow contents are stored in a separate array for clarity
+            var content_strings = [
+
+                '<div class="heading">' + 'Pelling' + '</div>' +
+                '<img  class= "imgright" src="images/info_pelling.jpg" width="150" />' +
+                '<p class="infowindow">Pelling is Sikkim\'s second biggest tourist destination after Gangtok. It offers breathtaking views of the Kangchendjunga and surrounding ranges, as well as the easy access it provides to tourist spots in the area. ' +
+                '<a href="http://sikkimtourism.gov.in/Webforms/General/Destination/Pelling.aspx?LocName=Pelling">[Source]</a> </p>',
+
+                '<div class="heading">' + 'Khecheopalri Lake' + '</div>' +
+                '<img  class= "imgright" src="images/info_khecho.jpg" width="150" />' +
+                '<p class="infowindow">Khecheopalri Lake, originally known as Kha-Chot-Palri (meaning the heaven of Padmasambhava) is an integral part of the much revered valley of "Demazong" meaning valley of rice. The lake is connected to several local traditions involding Guru Padmasambhava. ' +
+                '<a href="https://en.wikipedia.org/wiki/Khecheopalri_Lake">[Source]</a> </p>',
+
+
+                '<div class="heading">' + 'Pemayangtse Monastery' + '</div>' +
+                '<img  class= "imgright" src="images/info_pema.jpg" width="150" />' +
+                '<p class="infowindow">It is one of the oldest and premier monasteries of Sikkim, also the most famous in West Sikkim. Originally built by Lhatsun Chenpo in the 17th century, it was subsequently enlarged during the reign of the Chakdor Namgyal. ' +
+                '<a href="https://en.wikipedia.org/wiki/Pemayangtse_Monastery">[Source]</a> </p>',
+
+                '<div class="heading">' + 'Kanchenjunga Falls' + '</div>' +
+                '<img  class= "imgright" src="images/info_falls.jpg" width="150" />' +
+                '<p class="infowindow">About 28kms from Pelling, the Kanchenjunga Falls is a sight to behold. The falls are very big in size and equally attractive through out the year, causing it to become one of the leading tourist spots in west Sikkim. ' +
+                '<a href="http://www.gopelling.net/kanchendzonga_waterfalls.html">[Source]</a> </p>',
+
+                '<div class="heading">' + 'Sangacholing Monastery' + '</div>' +
+                '<img  class= "imgright" src="images/info_sanga.jpg" width="150" />' +
+                '<p class="infowindow">It is one of the oldest monasteries in Sikkim. The literal meaning of Sangacholing is "Island of the Guhyamantra teachings”. It is one of the sites frequented by ardent Buddhist devotees. ' +
+                '<a href="https://en.wikipedia.org/wiki/Sanga_Choeling_Monastery">[Source]</a> </p>',
+
+                '<div class="heading">' + 'Tashiding Monastery' + '</div>' +
+                '<img  class= "imgright" src="images/info_tashi.jpg" width="150" />' +
+                '<p class="infowindow">Tashiding Monastery is a Buddhist monastery of the Nyingma sect of Tibetan Buddhism. Founded in 1641, the word Tashiding means “The Devoted Central Glory”. It was extended and renovated in 1717 during the reign of the third Chogyal Chakdor Namgyal. ' +
+                '<a href="https://en.wikipedia.org/wiki/Tashiding_Monastery">[Source]</a> </p>',
+
+                '<div class="heading">' + 'Trekking zone' + '</div>' +
+                '<img  class= "imgright" src="images/info_trek.jpg" width="150" />' +
+                '<p class="infowindow">The valley between Pelling city and Yuksom is quite popular among trekkers. There is a trail which passes Khecheopalri Lake reaching Yuksom in about 9 hours. The valley affords excellent views of the Kangchanjunga range, fresh air and refreshing greenery. ' +
+                '<a href="http://www.east-himalaya.com/khecheopalri.php">[Source]</a> </p>',
+
+            ];
+            
+            // Adapted from: http://chrisltd.com/blog/2013/08/google-map-random-color-pins/
+            
+            var location_array = [
+                [content_strings[0], 27.319, 88.239, 'red.png'],
+                [content_strings[1], 27.3492, 88.1883, 'yellow.png'],
+                [content_strings[2], 27.3052, 88.2516, 'yellow.png'],
+                [content_strings[3], 27.360434, 88.198140, 'yellow.png'],
+                [content_strings[4], 27.297315, 88.221947, 'yellow.png'],
+                [content_strings[5], 27.308159, 88.298240, 'yellow.png'],
+            ];
+
+            var infowindow = new google.maps.InfoWindow({
+                maxWidth: 350
+            });
+
+            var markers = new Array();
+
+            for (var i = 0; i < location_array.length; i++) {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(location_array[i][1], location_array[i][2]),
+                    map: map,
+                    icon: 'images/' + location_array[i][3]
+                });
+
+                markers.push(marker);
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent(location_array[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                var trekzone = new google.maps.Rectangle({
+                    strokeColor: 'darkviolet',
+                    strokeOpacity: 0.3,
+                    strokeWeight: 5,
+                    fillColor: 'mintcream',
+                    fillOpacity: 0.1,
+                    map: map,
+                    bounds: {
+                        north: 27.377,
+                        south: 27.295,
+                        east: 88.23,
+                        west: 88.182
+                    }
+                });
+
+                google.maps.event.addListener(trekzone, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent(content_strings[6]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+
+            }
+
+            //autofit all markers and shapes
+
+            var bounds = new google.maps.LatLngBounds();
+            for (var i = 0; i < markers.length; i++) {
+                bounds.extend(markers[i].getPosition());
+            }
+
+            bounds.union(trekzone.getBounds());
+            map.fitBounds(bounds);
+
+            google.maps.event.addListener(map, 'click', function() {
+                infowindow.close();
+            });
+
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+
+
+</body>
+
+</html>
